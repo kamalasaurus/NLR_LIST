@@ -1,2 +1,3 @@
 cut -d$'	' -f1 nlr_list_probable.tsv
 https://v2.arabidopsis.org/tools/bulk/sequences/index.jsp
+https://nls-mapper.iab.keio.ac.jp/cgi-bin/NLS_Mapper_form.cgi
