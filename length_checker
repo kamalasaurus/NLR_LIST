@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+fasta = File.read(ARGV[0])
+
+File.open('truncated_single.fasta', 'w') do |f|
+  fasta
+    .split('>').reject(&:empty?).each do |fasta|
+      lines = fasta.split("\n")
+      header = lines.first
+      sequence = lines.drop(1).join('')
+
+      if sequence.length > 1022
+        f.puts ">#{header} || truncated 1"
+        f.puts sequence[0..1021]
+        f.puts ">#{header} || truncated 2"
+        f.puts sequence[-400..-1]
+      end
+    end
+end
