@@ -1,0 +1,2 @@
+cut -d$'	' -f1 nlr_list_probable.tsv
+https://v2.arabidopsis.org/tools/bulk/sequences/index.jsp

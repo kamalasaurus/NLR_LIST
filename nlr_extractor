@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'csv'
+require 'pry'
+
+DOMAINS = [/CNL/, /TNL/, /RNL/, /NL/]
+
+CSV.foreach('GenBank_GCA_000001735.2_geneID_all.tsv', headers: true, col_sep: "\t", header_converters: :symbol) do |row|
+  geneID, domains, domainsimpl = row.to_h.values_at(:geneid, :domain_cons, :domainsimpl_cons)
+  gene = geneID.split('-').last
+  puts "#{gene}\t#{domains}\t#{domainsimpl}" if DOMAINS.any? { |domain| !(domainsimpl =~ domain).nil? }
+end
